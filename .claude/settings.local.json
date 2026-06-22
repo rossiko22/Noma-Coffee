@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git --version)",
+      "Bash(bun --version)",
+      "Bash(az version *)",
+      "Bash(swa --version)",
+      "Bash(gh --version)"
+    ]
+  }
+}

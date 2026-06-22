@@ -1,0 +1,235 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Northbound Coffee Roasters — design system
+ * Restrained, editorial Scandinavian minimalism.
+ * Warm near-monochrome. One accent: clay/amber.
+ */
+
+@theme inline {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-clay: var(--clay);
+  --color-stone: var(--stone);
+}
+
+:root {
+  --radius: 2px;
+
+  /* Brand tokens */
+  --cream: oklch(0.953 0.018 78);          /* ~#F6F1EA */
+  --ink: oklch(0.236 0.022 45);            /* ~#2A211B */
+  --clay: oklch(0.572 0.131 52);           /* ~#B5651D */
+  --stone: oklch(0.84 0.015 70);           /* hairline borders */
+
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: oklch(0.97 0.012 78);
+  --card-foreground: var(--ink);
+  --popover: var(--cream);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--cream);
+  --secondary: oklch(0.91 0.014 75);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.92 0.014 75);
+  --muted-foreground: oklch(0.45 0.018 50);
+  --accent: var(--clay);
+  --accent-foreground: var(--cream);
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: var(--cream);
+  --border: var(--stone);
+  --input: var(--stone);
+  --ring: var(--clay);
+}
+
+.dark {
+  --background: oklch(0.18 0.015 45);
+  --foreground: oklch(0.95 0.015 78);
+  --card: oklch(0.22 0.018 45);
+  --card-foreground: oklch(0.95 0.015 78);
+  --popover: oklch(0.22 0.018 45);
+  --popover-foreground: oklch(0.95 0.015 78);
+  --primary: oklch(0.95 0.015 78);
+  --primary-foreground: oklch(0.18 0.015 45);
+  --secondary: oklch(0.28 0.02 45);
+  --secondary-foreground: oklch(0.95 0.015 78);
+  --muted: oklch(0.28 0.02 45);
+  --muted-foreground: oklch(0.7 0.018 60);
+  --accent: var(--clay);
+  --accent-foreground: oklch(0.95 0.015 78);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: var(--clay);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "ss02";
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 380;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    color: var(--color-foreground);
+  }
+
+  h1 { font-size: clamp(2.5rem, 6vw, 5.25rem); }
+  h2 { font-size: clamp(2rem, 4vw, 3.25rem); }
+  h3 { font-size: clamp(1.4rem, 2vw, 1.875rem); }
+  h4 { font-size: 1.25rem; font-weight: 420; }
+
+  p { max-width: 68ch; }
+
+  ::selection {
+    background: var(--clay);
+    color: var(--cream);
+  }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+    max-width: 88rem;
+  }
+  @media (min-width: 768px) {
+    .container-x { padding-inline: 2.5rem; }
+  }
+  @media (min-width: 1280px) {
+    .container-x { padding-inline: 4rem; }
+  }
+
+  .section-y {
+    padding-block: clamp(4rem, 9vw, 9rem);
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    font-weight: 500;
+  }
+
+  .link-underline {
+    position: relative;
+    display: inline-block;
+    color: inherit;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform-origin: left;
+    transition: transform .4s ease;
+  }
+  .link-underline:hover::after { transform: scaleX(0.4); }
+
+  .rule {
+    height: 1px;
+    background: var(--stone);
+    width: 100%;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.6rem;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background .25s ease, transform .25s ease;
+  }
+  .btn-primary:hover { background: var(--clay); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.6rem;
+    background: transparent;
+    color: var(--ink);
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    transition: background .25s ease, color .25s ease;
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--cream); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.fade-up { animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) both; }
+.fade-up-1 { animation-delay: .05s; }
+.fade-up-2 { animation-delay: .18s; }
+.fade-up-3 { animation-delay: .32s; }
+.fade-up-4 { animation-delay: .46s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up, .fade-up-1, .fade-up-2, .fade-up-3, .fade-up-4 {
+    animation: none !important;
+  }
+  * { transition: none !important; }
+}
